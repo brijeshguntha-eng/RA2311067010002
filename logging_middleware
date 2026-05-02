@@ -1,0 +1,58 @@
+/ ** 
+ * Applicable Logging Middleware 
+ * 
+ *@param{ string}  mound- The  mound trace or  element  mound( must be lowercase) 
+ *@param{ string}  position- The log  position e.g.,'  word',' error'( must be lowercase) 
+ *@param{ string} packageName- The package name( must be lowercase) 
+ *@param{ string} communication- The log communication 
+ *@param{ string} commemorative- The Deliverer commemorative for authorization 
+ *@returns{ Promise} The response from the logging service 
+ */ 
+ async function Log(  mound,  position, packageName, communication, commemorative){ 
+
+ if(  mound! ==  stack.toLowerCase()){ 
+ throw new Error(" Validation Error'  mound' must be  rigorously lowercase."); 
+ 
+ if(  position! ==  level.toLowerCase()){ 
+ throw new Error(" Validation Error'  position' must be  rigorously lowercase."); 
+ 
+ if( packageName! ==  packageName.toLowerCase()){ 
+ throw new Error(" Validation Error' package' must be  rigorously lowercase."); 
+ 
+ 
+ const endpoint = ' http// 20.207.122.201/ evaluation- service/ logs'; 
+ 
+ const  cargo = { 
+  mound  mound, 
+  position  position, 
+ package packageName, 
+ communication communication 
+; 
+ 
+ try{ 
+ const response await  cost( endpoint,{ 
+  system' POST', 
+  heads{ 
+ Content- Type''  operation/ json', 
+' Authorization' Bearer${ commemorative}, 
+ body JSON.stringify(  cargo) 
+); 
+ 
+ if(! response.ok){ 
+ throw new Error( Logging failed with status${ response.status}); 
+ 
+ 
+/ Attempt to parse JSON, or fallback to  textbook if the garçon does not return JSON 
+ const  textbook =  await response.text(); 
+ try{ 
+ return JSON.parse(  textbook); 
+ catch{ 
+ return  textbook; 
+ 
+ catch( error){ 
+(" Error in Log middleware", error.message); 
+  gamble error; 
+ 
+ 
+ 
+ = { Log};
